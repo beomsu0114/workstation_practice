@@ -20,15 +20,15 @@ Docker, Linux CLI, Git을 활용하여 환경 재현성을 갖춘 개발 워크�
 - [x] Docker 볼륨(volume)을 활용한 컨테이너 삭제 후 데이터 영속성 검증
 - [x] Git 사용자 설정 (git config)
 
-## 4. 핵심 이론 정리
-1. **절대 경로 vs 상대 경로**: 절대 경로는 루트(`/`) 기준 전체 경로, 상대 경로는 현재 위치(`.`) 기준 경로.
-2. **권한 (755, 644)**: 755는 소유자(rwx), 그룹·기타(rx). 644는 소유자(rw), 그룹·기타(r).
-3. **커스텀 이미지**: Dockerfile 명령어를 통해 기본 이미지 위에 필요 설정 및 파일을 추가하여 만든 독립된 이미지.
-4. **포트 매핑**: 격리된 컨테이너 내부 포트를 호스트 PC 포트와 연결하여 외부 접속을 가능하게 만드는 설정.
-5. **Docker 볼륨**: 컨테이너가 삭제되어도 데이터를 호스트에 영구 보존하는 지속성 저장소.
-6. **Git vs GitHub**: Git은 로컬 버전 관리 도구, GitHub는 원격 소스코드 공유 및 협업 플랫폼.
+## 4. 실습 수행 로그 및 검증 결과 (Execution Logs)
 
-## 5. 트러블슈팅
-- **이슈**: zsh에서 `echo "<h1>...!"` 실행 시 `zsh: event not found: </h1>` 에러 발생.
-- **원인**: zsh 쉘이 큰따옴표 안의 느낌표(`!`)를 명령 히스토리 이벤트로 해석함.
-- **해결**: 느낌표를 마침표(`.`)로 교체하거나 작은따옴표/이스케이프(`\!`)를 사용하여 정상 처리.
+### 4-1. Docker 헬스체크 & hello-world 실행
+```text
+$ docker --version
+Docker version 29.9.2, build a82e528
+
+$ docker run --rm hello-world
+Status: Downloaded newer image for hello-world:latest
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
